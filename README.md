@@ -1,3 +1,6 @@
+# carnet-react
+Sistema sencillo de creación de carnets desarrollado en React
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
