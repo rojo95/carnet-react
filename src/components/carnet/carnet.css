@@ -1,0 +1,12 @@
+.carnet {
+    width: 311.811px;
+    height: 423.117px;
+    /* height: 481.888px; */
+    border-radius: 10px;
+    overflow: hidden !important;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+}
