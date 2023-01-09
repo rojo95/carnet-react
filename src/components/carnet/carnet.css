@@ -1,9 +1,10 @@
 .carnet {
     width: 311.811px;
-    height: 423.117px;
+    height: 423.888px;
     /* height: 481.888px; */
     border-radius: 10px;
-    overflow: hidden !important;
+    position: relative;
+    right: 0px;
 }
 
 .img {
