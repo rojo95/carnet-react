@@ -322,7 +322,7 @@ class App extends React.PureComponent {
                       Imprimir
                     </button>;
                   }}
-                  pageStyle="@page { size : A5 ; margin: 0 0 0 0;}"
+                  // pageStyle="@page { size : A5 ; margin: 0 0 0 0;}"
                   documentTitle={`Carnet de ${this.state.name}`}
                   content={() => this.ref}
                 />
