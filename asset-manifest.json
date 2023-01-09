@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/carnet-react/static/css/main.156983fb.css",
+    "main.js": "/carnet-react/static/js/main.349f6ece.js",
+    "static/js/787.0b2a3f07.chunk.js": "/carnet-react/static/js/787.0b2a3f07.chunk.js",
+    "static/media/carnet.jpg": "/carnet-react/static/media/carnet.7f9051dcdab20c6dcba2.jpg",
+    "index.html": "/carnet-react/index.html",
+    "main.156983fb.css.map": "/carnet-react/static/css/main.156983fb.css.map",
+    "main.349f6ece.js.map": "/carnet-react/static/js/main.349f6ece.js.map",
+    "787.0b2a3f07.chunk.js.map": "/carnet-react/static/js/787.0b2a3f07.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.156983fb.css",
+    "static/js/main.349f6ece.js"
+  ]
+}
