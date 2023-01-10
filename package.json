@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@uiw/react-watermark": "^0.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-rnd": "^10.4.1",
@@ -15,8 +16,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -43,5 +44,5 @@
     "gh-pages": "^4.0.0",
     "tailwindcss": "^3.2.4"
   },
-  "homepage" : "http://rojo95.github.io/carnet-react"
+  "homepage": "http://rojo95.github.io/carnet-react"
 }
