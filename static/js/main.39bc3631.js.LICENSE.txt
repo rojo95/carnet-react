@@ -1,3 +1,5 @@
+/*! @uiw/watermark.js v0.0.5 | MIT © 2022 kenny wang <wowohoo@qq.com> https://uiwjs.github.io/react-watermark */
+
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
