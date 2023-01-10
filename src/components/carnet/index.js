@@ -1,6 +1,7 @@
 import React from "react";
 import { Rnd } from "react-rnd";
 import Watermark from '@uiw/react-watermark';
+import QRCode from "react-qr-code";
 import './carnet.css'
 
 class Carnet extends React.Component {
@@ -31,7 +32,7 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 40,
+                            x: 20,
                             y: 30,
                         }}
                         bounds='parent'
@@ -44,7 +45,7 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 40,
+                            x: 20,
                             y: 100,
                         }}
                         dragGrid={[20,20]}
@@ -52,9 +53,23 @@ class Carnet extends React.Component {
                         >
                         <img src={this.props.info.img} className='img'/>
                     </Rnd>
+                    <Rnd
+                        default={{
+                            x: 165,
+                            y: 100,
+                        }}
+                        dragGrid={[20,20]}
+                        enableResizing={false}
+                        bounds='parent'
+                    >
+                        <QRCode
+                            value={`Carnet DEMO generado para una muestra; de la empresa ${this.props.info.factory}, perteneciente a ${this.props.info.name}, ${this.props.info.labelId}: ${this.props.info.id}`}
+                            size={128}
+                        />
+                    </Rnd>
                     <Rnd 
                         default={{
-                            x: 40,
+                            x: 20,
                             y: 250,
                         }}
                         bounds='parent'
@@ -67,7 +82,7 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 40,
+                            x: 20,
                             y: 270,
                         }}
                         bounds='parent'
@@ -80,7 +95,7 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 40,
+                            x: 20,
                             y: 290,
                         }}
                         bounds='parent'
