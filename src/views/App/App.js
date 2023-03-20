@@ -58,6 +58,7 @@ class App extends React.PureComponent {
     this.getData();
     this.randomFactory();
     document.title = "Crear Carnets con React.JS";
+    document.content = "Sitio web creado con React.JS para la creación de carnets."
   }
 
   randomNumber(max, min = 0) {
