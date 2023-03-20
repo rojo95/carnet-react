@@ -9,6 +9,8 @@ import Footer from '../../components/footer';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import ReactToPrint from 'react-to-print';
 
+import MetaTags from 'react-meta-tags';
+
 const empresas = [
   'OVNISOLUTIONS',
   'Microsoft',
@@ -24,6 +26,7 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      title: 'Sistema de Carnetización',
       background: carnetImg,
       factory: '',
       factoryColor: true,
@@ -57,12 +60,6 @@ class App extends React.PureComponent {
   componentDidMount() {
     this.getData();
     this.randomFactory();
-    document.title = 'Crear Carnets con React.JS';
-    document.head.innerHTML += `
-      <meta name='description' content='Página de inicio de sistema de creación de carnets desarrollado en react por Johan Román.'/>
-      <meta name="keywords" content="Carnet Editable, Carnets, React JS, React.JS, ReactJS, CSS, JavaScript">
-      <meta name="author" content="Johan Román">
-    `;
   }
 
   randomNumber(max, min = 0) {
@@ -113,6 +110,19 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="App">
+        <MetaTags>
+          <title>{this.state.title}</title>
+          <meta
+            name="description"
+            content="Página de inicio de sistema de creación de carnets desarrollado en react por Johan Román.."
+          />
+          <meta
+            name="keywords"
+            content="Carnet Editable, Carnets, React JS, React.JS, ReactJS, CSS, JavaScript"
+          />
+          <meta name="author" content="Johan Román" />
+          <meta property="og:title" content={this.state.title} />
+        </MetaTags>
         <Navbar />
 
         <div className="grid grid-cols-12 gap-4 py-10">
