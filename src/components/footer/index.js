@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import { HeartIcon } from "@heroicons/react/20/solid";
-import "./index.css";
+import { HeartIcon } from '@heroicons/react/20/solid';
+import './index.css';
 
 export default function Footer() {
   const [fecha, setFecha] = useState();
@@ -20,7 +20,7 @@ export default function Footer() {
           <p className="heart-content m-auto">
             <HeartIcon className="h-6 h-6 text-purple-500 heart mx-auto" />
           </p>
-          por{" "}
+          por{' '}
           <a
             href="https://rojo95.github.io/portfolio/"
             className="hover:underline"

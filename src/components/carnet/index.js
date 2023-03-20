@@ -1,18 +1,18 @@
-import React from "react";
-import { Rnd } from "react-rnd";
-import Watermark from "@uiw/react-watermark";
-import QRCode from "react-qr-code";
-import "./carnet.css";
+import React from 'react';
+import { Rnd } from 'react-rnd';
+import Watermark from '@uiw/react-watermark';
+import QRCode from 'react-qr-code';
+import './carnet.css';
 
 class Carnet extends React.Component {
   render() {
     const d = new Date();
-    const bold = "font-bold";
-    const sizes = ["text-2xl", "text-xl", "text-base", "text-sm", "text-xs"];
+    const bold = 'font-bold';
+    const sizes = ['text-2xl', 'text-xl', 'text-base', 'text-sm', 'text-xs'];
     return (
       <Watermark
         content="Demo por Johan Román"
-        style={{ background: "#fff", width: "311.811px" }}
+        style={{ background: '#fff', width: '311.811px' }}
       >
         <div className="carnet shadow-md">
           <Rnd
@@ -40,8 +40,8 @@ class Carnet extends React.Component {
           >
             <p
               className={`factory ${
-                this.props.info.factoryColor ? "" : "text-white"
-              } ${this.props.info.factoryBold ? bold : ""} ${
+                this.props.info.factoryColor ? '' : 'text-white'
+              } ${this.props.info.factoryBold ? bold : ''} ${
                 sizes[this.props.info.factorySize]
               }`}
             >
@@ -68,9 +68,9 @@ class Carnet extends React.Component {
             bounds="parent"
           >
             <QRCode
-              className={!this.props.info.showQr ? "hidden" : ""}
-              bgColor={`#${this.props.info.qrLigth ? "fff" : "000"}`}
-              fgColor={`#${this.props.info.qrLigth ? "000" : "fff"}`}
+              className={!this.props.info.showQr ? 'hidden' : ''}
+              bgColor={`#${this.props.info.qrLigth ? 'fff' : '000'}`}
+              fgColor={`#${this.props.info.qrLigth ? '000' : 'fff'}`}
               value={`DEMO -- ${this.props.info.qr} -- DEMO`}
               size={128}
             />
@@ -86,8 +86,8 @@ class Carnet extends React.Component {
           >
             <div
               className={`nombre ${
-                this.props.info.nameColor ? "" : "text-white"
-              } ${this.props.info.nameBold ? bold : ""} ${
+                this.props.info.nameColor ? '' : 'text-white'
+              } ${this.props.info.nameBold ? bold : ''} ${
                 sizes[this.props.info.nameSize]
               }`}
             >
@@ -105,8 +105,8 @@ class Carnet extends React.Component {
           >
             <div
               className={`cargo ${
-                this.props.info.cargoColor ? "" : "text-white"
-              } ${this.props.info.cargoBold ? bold : ""} ${
+                this.props.info.cargoColor ? '' : 'text-white'
+              } ${this.props.info.cargoBold ? bold : ''} ${
                 sizes[this.props.info.cargoSize]
               }`}
             >
@@ -123,8 +123,8 @@ class Carnet extends React.Component {
             enableResizing={false}
           >
             <div
-              className={`id ${this.props.info.idColor ? "" : "text-white"} ${
-                this.props.info.idBold ? bold : ""
+              className={`id ${this.props.info.idColor ? '' : 'text-white'} ${
+                this.props.info.idBold ? bold : ''
               } ${sizes[this.props.info.idSize]}`}
             >
               {`${this.props.info.labelId}: ${this.props.info.id}`}
@@ -134,7 +134,7 @@ class Carnet extends React.Component {
             default={{
               x: 0,
               y: 430,
-              width: this.props.info.fechaCenter ? "100%" : "auto",
+              width: this.props.info.fechaCenter ? '100%' : 'auto',
             }}
             className="w-full"
             bounds="parent"
@@ -142,9 +142,9 @@ class Carnet extends React.Component {
             enableResizing={false}
           >
             <div
-              className={`${this.props.info.fecha ? "hidden" : ""} ${
-                this.props.info.fechaBold ? bold : ""
-              } ${this.props.info.fechaLigth ? "text-white" : ""} `}
+              className={`${this.props.info.fecha ? 'hidden' : ''} ${
+                this.props.info.fechaBold ? bold : ''
+              } ${this.props.info.fechaLigth ? 'text-white' : ''} `}
             >
               {`Vence: ${d.getDay() + 1}/${d.getMonth() + 1}/${
                 d.getFullYear() + 1

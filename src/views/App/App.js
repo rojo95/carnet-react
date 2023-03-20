@@ -1,44 +1,44 @@
-import React, { useEffect } from "react";
-import "./App.css";
-import carnetImg from "../../assets/img/carnet_1.png";
+import React, { useEffect } from 'react';
+import './App.css';
+import carnetImg from '../../assets/img/carnet_1.png';
 
-import Navbar from "../../components/Navbar/";
-import Carnet from "../../components/carnet";
-import Footer from "../../components/footer";
+import Navbar from '../../components/Navbar/';
+import Carnet from '../../components/carnet';
+import Footer from '../../components/footer';
 
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import ReactToPrint from "react-to-print";
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import ReactToPrint from 'react-to-print';
 
 const empresas = [
-  "OVNISOLUTIONS",
-  "Microsoft",
-  "Hewlett-Packard",
-  "Volkswagen",
-  "Toyota Motors",
-  "Mercedes-Benz Group",
-  "Apple",
-  "Samsung",
-  "Yamaha",
+  'OVNISOLUTIONS',
+  'Microsoft',
+  'Hewlett-Packard',
+  'Volkswagen',
+  'Toyota Motors',
+  'Mercedes-Benz Group',
+  'Apple',
+  'Samsung',
+  'Yamaha',
 ];
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       background: carnetImg,
-      factory: "",
+      factory: '',
       factoryColor: true,
       factoryBold: true,
       factorySize: 0,
-      name: "",
+      name: '',
       nameColor: true,
       nameBold: false,
       nameSize: 2,
-      cargo: "Gerente General",
+      cargo: 'Gerente General',
       cargoColor: true,
       cargoBold: false,
       cargoSize: 2,
-      labelId: "",
-      id: "",
+      labelId: '',
+      id: '',
       idColor: true,
       idBold: false,
       idSize: 2,
@@ -46,7 +46,7 @@ class App extends React.PureComponent {
       fechaLigth: true,
       fechaBold: false,
       fechaCenter: true,
-      img: "",
+      img: '',
       done: false,
       showQr: true,
       qrLigth: true,
@@ -57,12 +57,12 @@ class App extends React.PureComponent {
   componentDidMount() {
     this.getData();
     this.randomFactory();
-    document.title = "Crear Carnets con React.JS";
-    document.head.innerHTML+=`
+    document.title = 'Crear Carnets con React.JS';
+    document.head.innerHTML += `
       <meta name='description' content='Página de inicio de sistema de creación de carnets desarrollado en react por Johan Román.'/>
       <meta name="keywords" content="Carnet Editable, Carnets, React JS, React.JS, ReactJS, CSS, JavaScript">
       <meta name="author" content="Johan Román">
-    `
+    `;
   }
 
   randomNumber(max, min = 0) {
@@ -75,26 +75,26 @@ class App extends React.PureComponent {
   }
 
   async getData() {
-    const ci = new Intl.NumberFormat("es-VE").format(
+    const ci = new Intl.NumberFormat('es-VE').format(
       this.randomNumber(5000000, 90000000)
     );
-    return await fetch("https://randomuser.me/api/", { method: "GET" })
+    return await fetch('https://randomuser.me/api/', { method: 'GET' })
       .then((result) => result.json())
       .then((data) => {
         console.log(data.results[0]);
         this.setState({
-          name: data.results[0].name.first + " " + data.results[0].name.last,
+          name: data.results[0].name.first + ' ' + data.results[0].name.last,
           id:
-            data.results[0].id.value === ("" || null)
+            data.results[0].id.value === ('' || null)
               ? ci
               : data.results[0].id.value,
           labelId:
-            data.results[0].id.name === "" ? "C.I" : data.results[0].id.name,
+            data.results[0].id.name === '' ? 'C.I' : data.results[0].id.name,
           img: data.results[0].picture.large,
         });
       })
       .catch((error) => {
-        console.log("Hubo un problema con la petición Fetch:" + error.message);
+        console.log('Hubo un problema con la petición Fetch:' + error.message);
       });
   }
 
@@ -180,18 +180,18 @@ class App extends React.PureComponent {
                           this.setState({ nameColor: !this.state.nameColor })
                         }
                       >
-                        &nbsp;{!this.state.nameColor ? "Oscurecer" : "Aclarar"}
+                        &nbsp;{!this.state.nameColor ? 'Oscurecer' : 'Aclarar'}
                         &nbsp;
                       </button>
                       <button
                         className={`bg-blue-400 hover:bg-blue-300 text-white ${
-                          !this.state.nameBold ? "font-bold" : ""
+                          !this.state.nameBold ? 'font-bold' : ''
                         } py-2 px-4 rounded-tr`}
                         onClick={(e) =>
                           this.setState({ nameBold: !this.state.nameBold })
                         }
                       >
-                        {this.state.nameBold ? "Normal" : "Bold"}
+                        {this.state.nameBold ? 'Normal' : 'Bold'}
                       </button>
                     </div>
                     <div className="relative">
@@ -250,18 +250,18 @@ class App extends React.PureComponent {
                           this.setState({ idColor: !this.state.idColor })
                         }
                       >
-                        &nbsp;{!this.state.idColor ? "Oscurecer" : "Aclarar"}
+                        &nbsp;{!this.state.idColor ? 'Oscurecer' : 'Aclarar'}
                         &nbsp;
                       </button>
                       <button
                         className={`bg-blue-400 hover:bg-blue-300 text-white ${
-                          !this.state.idBold ? "font-bold" : ""
+                          !this.state.idBold ? 'font-bold' : ''
                         } py-2 px-4`}
                         onClick={(e) =>
                           this.setState({ idBold: !this.state.idBold })
                         }
                       >
-                        {this.state.idBold ? "Normal" : "Bold"}
+                        {this.state.idBold ? 'Normal' : 'Bold'}
                       </button>
                     </div>
 
@@ -310,18 +310,18 @@ class App extends React.PureComponent {
                           this.setState({ cargoColor: !this.state.cargoColor })
                         }
                       >
-                        &nbsp;{!this.state.cargoColor ? "Oscurecer" : "Aclarar"}
+                        &nbsp;{!this.state.cargoColor ? 'Oscurecer' : 'Aclarar'}
                         &nbsp;
                       </button>
                       <button
                         className={`bg-blue-400 hover:bg-blue-300 text-white ${
-                          !this.state.cargoBold ? "font-bold" : ""
+                          !this.state.cargoBold ? 'font-bold' : ''
                         } py-2 px-4 rounded-tr`}
                         onClick={(e) =>
                           this.setState({ cargoBold: !this.state.cargoBold })
                         }
                       >
-                        {this.state.cargoBold ? "Normal" : "Bold"}
+                        {this.state.cargoBold ? 'Normal' : 'Bold'}
                       </button>
                     </div>
 
@@ -412,13 +412,13 @@ class App extends React.PureComponent {
                               })
                             }
                           >
-                            {!this.state.factoryColor ? "Oscurecer" : "Aclarar"}
+                            {!this.state.factoryColor ? 'Oscurecer' : 'Aclarar'}
                           </button>
                         </div>
                         <div className="col-span-6 md:col-span-3">
                           <button
                             className={`h-full w-full bg-blue-400 hover:bg-blue-300 text-white ${
-                              !this.state.factoryBold ? "font-bold" : ""
+                              !this.state.factoryBold ? 'font-bold' : ''
                             } py-2 px-auto md:rounded-tr`}
                             onClick={() =>
                               this.setState({
@@ -426,7 +426,7 @@ class App extends React.PureComponent {
                               })
                             }
                           >
-                            {this.state.factoryBold ? "Normal" : "Bold"}
+                            {this.state.factoryBold ? 'Normal' : 'Bold'}
                           </button>
                         </div>
 
@@ -480,30 +480,30 @@ class App extends React.PureComponent {
                           <button
                             className={`h-full w-full shadow ${
                               this.state.showQr
-                                ? "bg-purple-500 hover:bg-purple-400"
-                                : "bg-gray-400 hover:bg-gray-300"
+                                ? 'bg-purple-500 hover:bg-purple-400'
+                                : 'bg-gray-400 hover:bg-gray-300'
                             } focus:shadow-outline focus:outline-none text-white font-bold py-2 px-auto rounded-bl`}
                             type="button"
                             onClick={(e) =>
                               this.setState({ showQr: !this.state.showQr })
                             }
                           >
-                            {this.state.showQr ? "Desactivar" : "Activar"} QR
+                            {this.state.showQr ? 'Desactivar' : 'Activar'} QR
                           </button>
                         </div>
                         <div className="col-span-6">
                           <button
                             className={`h-full w-full shadow ${
                               !this.state.qrLigth
-                                ? "text-gray-800"
-                                : "text-white"
+                                ? 'text-gray-800'
+                                : 'text-white'
                             } bg-orange-300 hover:bg-orange-200 focus:shadow-outline focus:outline-none font-bold py-2 px-auto rounded-br`}
                             type="button"
                             onClick={(e) =>
                               this.setState({ qrLigth: !this.state.qrLigth })
                             }
                           >
-                            Fondo {this.state.qrLigth ? "Oscuro" : "Claro"}
+                            Fondo {this.state.qrLigth ? 'Oscuro' : 'Claro'}
                           </button>
                         </div>
                       </div>
@@ -523,8 +523,8 @@ class App extends React.PureComponent {
                           <button
                             className={`h-full w-full shadow ${
                               !this.state.fecha
-                                ? "bg-purple-500 hover:bg-purple-400"
-                                : "bg-gray-400 hover:bg-gray-300"
+                                ? 'bg-purple-500 hover:bg-purple-400'
+                                : 'bg-gray-400 hover:bg-gray-300'
                             } focus:shadow-outline focus:outline-none text-white font-bold py-2 px-auto rounded-tl`}
                             type="button"
                             onClick={(e) =>
@@ -533,15 +533,15 @@ class App extends React.PureComponent {
                             name="fecha"
                             id="fecha"
                           >
-                            {this.state.fecha ? "Activar" : "Desactivar"} Fecha
+                            {this.state.fecha ? 'Activar' : 'Desactivar'} Fecha
                           </button>
                         </div>
                         <div className="col-span-6">
                           <button
                             className={`h-full w-full shadow ${
                               this.state.fechaCenter
-                                ? "bg-purple-500 hover:bg-purple-400"
-                                : "bg-gray-400 hover:bg-gray-300"
+                                ? 'bg-purple-500 hover:bg-purple-400'
+                                : 'bg-gray-400 hover:bg-gray-300'
                             } focus:shadow-outline focus:outline-none text-white font-bold py-2 px-auto rounded-tr`}
                             type="button"
                             onClick={(e) =>
@@ -552,7 +552,7 @@ class App extends React.PureComponent {
                             name="fecha"
                             id="fecha"
                           >
-                            {this.state.fechaCenter ? "C" : "Desc"}entrar
+                            {this.state.fechaCenter ? 'C' : 'Desc'}entrar
                           </button>
                         </div>
                         <div className="col-span-6">
@@ -564,13 +564,13 @@ class App extends React.PureComponent {
                               })
                             }
                           >
-                            {this.state.fechaLigth ? "Oscurecer" : "Aclarar"}
+                            {this.state.fechaLigth ? 'Oscurecer' : 'Aclarar'}
                           </button>
                         </div>
                         <div className="col-span-6">
                           <button
                             className={`h-full w-full bg-blue-400 hover:bg-blue-300 text-white ${
-                              !this.state.fechaBold ? "font-bold" : ""
+                              !this.state.fechaBold ? 'font-bold' : ''
                             } py-2 px-auto rounded-br`}
                             onClick={(e) =>
                               this.setState({
@@ -578,7 +578,7 @@ class App extends React.PureComponent {
                               })
                             }
                           >
-                            {this.state.fechaBold ? "Normal" : "Bold"}
+                            {this.state.fechaBold ? 'Normal' : 'Bold'}
                           </button>
                         </div>
                       </div>
@@ -650,9 +650,9 @@ class App extends React.PureComponent {
           <div
             className="container m-auto col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4"
             style={{
-              width: "311.811px",
-              maxWidth: "311.811px",
-              overflow: "hidden",
+              width: '311.811px',
+              maxWidth: '311.811px',
+              overflow: 'hidden',
             }}
           >
             <Carnet info={this.state} ref={(el) => (this.ref = el)} />
