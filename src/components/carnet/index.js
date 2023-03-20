@@ -61,15 +61,18 @@ class Carnet extends React.Component {
                         dragGrid={[20,20]}
                         enableResizing={false}
                         bounds='parent'
-                    >
+                        >
                         <QRCode
-                            value={`Carnet DEMO generado para una muestra; de la empresa ${this.props.info.factory}, perteneciente a ${this.props.info.name}, ${this.props.info.labelId}: ${this.props.info.id}`}
+                            className={!this.props.info.showQr ? 'hidden' : ''}
+                            bgColor={`#${this.props.info.qrLigth ? 'fff' : '000'}`}
+                            fgColor={`#${this.props.info.qrLigth ? '000' : 'fff'}`}
+                            value={`DEMO -- ${this.props.info.qr} -- DEMO`}
                             size={128}
                         />
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 20,
+                            x: 100,
                             y: 250,
                         }}
                         bounds='parent'
@@ -82,7 +85,7 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 20,
+                            x: 100,
                             y: 270,
                         }}
                         bounds='parent'
@@ -95,7 +98,7 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 20,
+                            x: 100,
                             y: 290,
                         }}
                         bounds='parent'
@@ -108,14 +111,16 @@ class Carnet extends React.Component {
                     </Rnd>
                     <Rnd 
                         default={{
-                            x: 95,
-                            y: 390,
+                            x: 0,
+                            y: 430,
+                            width: this.props.info.fechaCenter ? '100%' : 'auto'
                         }}
+                        className='w-full'
                         bounds='parent'
                         dragGrid={[20,20]}
                         enableResizing={false}
                     >
-                        <div className={`${this.props.info.fecha ? 'hidden' : ''} ${this.props.info.fechaBold ? bold : ''} ${this.props.info.fechaLigth ? 'text-white' : ''}`}>
+                        <div className={`${this.props.info.fecha ? 'hidden' : ''} ${this.props.info.fechaBold ? bold : ''} ${this.props.info.fechaLigth ? 'text-white' : ''} `}>
                             {`Vence: ${d.getDay()+1}/${d.getMonth()+1}/${d.getFullYear()+1}`}
                         </div>
                     </Rnd>
