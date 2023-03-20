@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './App.css';
-import carnetImg from '../../assets/img/carnet.jpg';
-import Navbar from '../../components/Navbar/';
+import carnetImg from '../../assets/img/carnet_1.png';
 
+
+
+import Navbar from '../../components/Navbar/';
 import Carnet from '../../components/carnet';
+import Footer from '../../components/footer';
+
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import ReactToPrint from 'react-to-print';
 
-const ref = React.createRef();
 const empresas = [
   'OVNISOLUTIONS',
   'Microsoft',
@@ -42,10 +46,20 @@ class App extends React.PureComponent {
       idSize: 2,
       fecha: false,
       fechaLigth: true,
-      fechaBold: true,
+      fechaBold: false,
+      fechaCenter: true,
       img: '',
-      done: false
+      done: false,
+      showQr: true,
+      qrLigth: true,
+      qr: `Carnet DEMO generado para una muestra; de la empresa ${this.factory}, perteneciente a ${this.name}, ${this.labelId}: ${this.id}`
     };
+  }
+
+  settingTitle() {
+    // useEffect(() => {
+    //   document.title = 'My Page Title';
+    // }, []);
   }
 
   componentDidMount() {
@@ -91,37 +105,25 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="App">
-        <Navbar></Navbar>
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
-  
+        <Navbar/>
+
         <div className='grid grid-cols-12 gap-4 py-10'>
 
-          <div className='container mx-auto col-span-12 sm:col-span-12 md:col-span-8 px-3 md:px-10'>
+          <div className='container mx-auto col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-8 px-3 md:px-10'>
             <div className="bg-white shadow-xl rounded px-10 pt-6 pb-8 mb-4">
 
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-12 sm:col-span-12 md:col-span-6">
 
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="profile">
                       Foto de Perfil
                     </label>
                     <div className="inline-flex w-full">
                       <div className="shrink-0">
-                        <img className="h-16 w-16 object-cover rounded-full" src={this.state.img} alt="Foto de perfil actual" />
+                        <label htmlFor="profile">
+                          <img className="h-16 w-16 object-cover rounded-full" src={this.state.img} alt="Foto de perfil actual" />
+                        </label>
                       </div>
                       <label className="block pt-4">
                         <span className="sr-only">Elegir Imagen de Perfil</span>
@@ -138,7 +140,7 @@ class App extends React.PureComponent {
                     </div>
                   </div>
                   
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                       Nombre Completo
                     </label>
@@ -165,7 +167,7 @@ class App extends React.PureComponent {
                         {this.state.nameBold ? 'Normal' : 'Bold'}
                       </button>
                     </div>
-                    <div>
+                    <div className="relative">
                       <select 
                         className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-b shadow leading-tight focus:outline-none focus:shadow-outline"
                         onChange={(e)=>{this.setState({nameSize: e.target.value})}}
@@ -178,12 +180,12 @@ class App extends React.PureComponent {
                         <option value={4}>Muy Pequeño</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        <ChevronDownIcon className="h-7 h-7 text-gray-500"/>
                       </div>
                     </div>
                   </div>
 
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="labelId">
                       Identificación
                     </label>
@@ -223,7 +225,7 @@ class App extends React.PureComponent {
 
                     </div>
 
-                    <div>
+                    <div className="relative">
                       <select 
                         className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-b shadow leading-tight focus:outline-none focus:shadow-outline"
                         onChange={(e)=>{this.setState({idSize: e.target.value})}}
@@ -236,13 +238,13 @@ class App extends React.PureComponent {
                         <option value={4}>Muy Pequeño</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        <ChevronDownIcon className="h-7 h-7 text-gray-500"/>
                       </div>
                     </div>
                     
                   </div>
 
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cargo">
                       Cargo
                     </label>
@@ -270,7 +272,7 @@ class App extends React.PureComponent {
                       </button>
                     </div>
 
-                    <div>
+                    <div className="relative">
                       <select 
                         className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-b shadow leading-tight focus:outline-none focus:shadow-outline"
                         onChange={(e)=>{this.setState({cargoSize: e.target.value})}}
@@ -283,7 +285,7 @@ class App extends React.PureComponent {
                         <option value={4}>Muy Pequeño</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                        <ChevronDownIcon className="h-7 h-7 text-gray-500"/>
                       </div>
                     </div>
                   </div>
@@ -292,13 +294,15 @@ class App extends React.PureComponent {
 
                 <div className="col-span-12 sm:col-span-12 md:col-span-6">
 
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="background">
-                      Immagen de Fondo
+                      Imagen de Fondo
                     </label>
                     <div className="inline-flex w-full">
                       <div className="shrink-0">
-                        <img className="h-16 w-11" src={this.state.background} alt="Foto de perfil actual" />
+                        <label htmlFor="background">
+                          <img className="h-16 w-11" src={this.state.background} alt="Foto de perfil actual" />
+                        </label>
                       </div>
                       <label className="block pt-4">
                         <span className="sr-only">Choose profile photo</span>
@@ -314,52 +318,157 @@ class App extends React.PureComponent {
                     </div>
                   </div>
 
-                  <div className="mb-4">
+                  <div className="mb-4 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="factory">
                       Empresa
                     </label>
                     <div className='inline-flex w-full'>
-                      <input 
-                        className="shadow appearance-none border border-gray-400 rounded-tl w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                        id="factory" 
-                        name="factory" 
-                        type="text" 
-                        placeholder="Nombre Completo"
-                        value={this.state.factory} 
-                        onChange={(e)=>this.setState({factory:e.target.value})}
-                      />
-                      <button 
-                        className="bg-orange-300 hover:bg-orange-200 text-gray-800 font-bold py-2 px-4"
-                        onClick={()=>this.setState({factoryColor: !this.state.factoryColor})}
-                      >
-                        {!this.state.factoryColor ? 'Oscurecer' : 'Aclarar'}
-                      </button>
-                      <button 
-                        className={`bg-blue-400 hover:bg-blue-300 text-white ${!this.state.factoryBold ? 'font-bold' : ''} py-2 px-4 rounded-tr`}
-                        onClick={()=>this.setState({factoryBold: !this.state.factoryBold})}
-                      >
-                        {this.state.factoryBold ? 'Normal' : 'Bold'}
-                      </button>
+
+                      <div className='grid grid-cols-12 w-full'>
+                        <div className="col-span-12 sm:col-span-12 md:col-span-6 p-0 m-0">
+                          <input 
+                              className="h-full w-full shadow appearance-none border border-gray-400 rounded-t md:rounded-tr-none dm:rounded-tl py-2 px-3 m-0 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                              id="factory" 
+                              name="factory" 
+                              type="text" 
+                              placeholder="Nombre Completo"
+                              value={this.state.factory} 
+                              onChange={(e)=>this.setState({factory:e.target.value})}
+                          />
+                        </div>
+                        <div className="col-span-6 md:col-span-3">
+                          <button 
+                            className=" h-full w-full bg-orange-300 hover:bg-orange-200 text-gray-800 font-bold py-2 px-auto"
+                            onClick={()=>this.setState({factoryColor: !this.state.factoryColor})}
+                          >
+                            {!this.state.factoryColor ? 'Oscurecer' : 'Aclarar'}
+                          </button>
+                        </div>
+                        <div className="col-span-6 md:col-span-3">
+                          <button 
+                            className={`h-full w-full bg-blue-400 hover:bg-blue-300 text-white ${!this.state.factoryBold ? 'font-bold' : ''} py-2 px-auto md:rounded-tr`}
+                            onClick={()=>this.setState({factoryBold: !this.state.factoryBold})}
+                          >
+                            {this.state.factoryBold ? 'Normal' : 'Bold'}
+                          </button>
+                        </div>
+
+                        <div className="col-span-12">
+                          <div className="relative">
+                            <select 
+                              className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-b shadow leading-tight focus:outline-none focus:shadow-outline"
+                              onChange={(e)=>{this.setState({factorySize: e.target.value})}}
+                              defaultValue={this.state.factorySize}
+                            >
+                              <option value={0} >Grande</option>
+                              <option value={1}>Mediano</option>
+                              <option value={2}>Normal</option>
+                              <option value={3}>Pequeño</option>
+                              <option value={4}>Muy Pequeño</option>
+                            </select>
+                            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                              <ChevronDownIcon className="h-7 h-7 text-gray-500"/>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+
                     </div>
-                    <div>
-                      <select 
-                        className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-b shadow leading-tight focus:outline-none focus:shadow-outline"
-                        onChange={(e)=>{this.setState({factorySize: e.target.value})}}
-                        defaultValue={this.state.factorySize}
-                      >
-                        <option value={0} >Grande</option>
-                        <option value={1}>Mediano</option>
-                        <option value={2}>Normal</option>
-                        <option value={3}>Pequeño</option>
-                        <option value={4}>Muy Pequeño</option>
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                  </div>
+
+                  <div className="mb-4 w-full">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="qr">
+                      QR
+                    </label>
+                    <div className="inline-flex w-full">
+                      <div className='grid grid-cols-12 w-full'>
+                        <div className="col-span-12">
+                          <input 
+                              className="h-full w-full shadow appearance-none border border-gray-400 rounded-t py-2 px-3 m-0 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
+                              id="qr" 
+                              name="qr" 
+                              type="text" 
+                              placeholder="Nombre Completo"
+                              value={this.state.qr} 
+                              onChange={(e)=>this.setState({qr:e.target.value})}
+                          />
+                        </div>
+                        <div className="col-span-6">
+                          <button 
+                            className={`h-full w-full shadow ${this.state.showQr ? 'bg-purple-500 hover:bg-purple-400' : 'bg-gray-400 hover:bg-gray-300'} focus:shadow-outline focus:outline-none text-white font-bold py-2 px-auto rounded-bl`}
+                            type="button"
+                            onClick={(e)=>this.setState({showQr:!this.state.showQr})}
+                            >
+                            {this.state.showQr ? 'Desactivar' : 'Activar'} QR
+                          </button>
+                        </div>
+                        <div className="col-span-6">
+                          <button 
+                            className={`h-full w-full shadow ${!this.state.qrLigth ? 'text-gray-800' : 'text-white'} bg-orange-300 hover:bg-orange-200 focus:shadow-outline focus:outline-none font-bold py-2 px-auto rounded-br`}
+                            type="button"
+                            onClick={(e)=>this.setState({qrLigth:!this.state.qrLigth})}
+                            >
+                            Fondo {this.state.qrLigth ? 'Oscuro' : 'Claro'}
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
+
+                  <div className="mb-4 w-full">
+                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fecha">
+                      Fecha
+                    </label>
+                    <div className="inline-flex w-full">
+
+                      <div className='grid grid-cols-12 w-full'>
+                        <div className="col-span-6">
+                          <button 
+                            className={`h-full w-full shadow ${!this.state.fecha ? 'bg-purple-500 hover:bg-purple-400' : 'bg-gray-400 hover:bg-gray-300'} focus:shadow-outline focus:outline-none text-white font-bold py-2 px-auto rounded-tl`}
+                            type="button"
+                            onClick={(e)=>this.setState({fecha:!this.state.fecha})}
+                            name="fecha"
+                            id="fecha"
+                          >
+                            {this.state.fecha ? 'Activar' : 'Desactivar'} Fecha
+                          </button>
+                        </div>
+                        <div className="col-span-6">
+                          <button 
+                            className={`h-full w-full shadow ${this.state.fechaCenter ? 'bg-purple-500 hover:bg-purple-400' : 'bg-gray-400 hover:bg-gray-300'} focus:shadow-outline focus:outline-none text-white font-bold py-2 px-auto rounded-tr`}
+                            type="button"
+                            onClick={(e)=>this.setState({fechaCenter:!this.state.fechaCenter})}
+                            name="fecha"
+                            id="fecha"
+                          >
+                            {this.state.fechaCenter ? 'C' : 'Desc'}entrar
+                          </button>
+                        </div>
+                        <div className="col-span-6">
+                          <button 
+                            className="h-full w-full bg-orange-300 hover:bg-orange-200 text-gray-800 font-bold py-2 px-auto rounded-bl"
+                            onClick={(e)=>this.setState({fechaLigth: !this.state.fechaLigth})}
+                          >
+                            {this.state.fechaLigth ? 'Oscurecer' : 'Aclarar'}
+                          </button>
+                        </div>
+                        <div className="col-span-6">
+                          <button 
+                            className={`h-full w-full bg-blue-400 hover:bg-blue-300 text-white ${!this.state.fechaBold ? 'font-bold' : ''} py-2 px-auto rounded-br`}
+                            onClick={(e)=>this.setState({fechaBold: !this.state.fechaBold})}
+                          >
+                            {this.state.fechaBold ? 'Normal' : 'Bold'}
+                          </button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
       
-                  <div className="md:items-center mb-6 w-full">
+                  {/* <div className="md:items-center mb-6 w-full">
                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fecha">
                       Fecha
                     </label>
@@ -386,11 +495,11 @@ class App extends React.PureComponent {
                         {this.state.fechaBold ? 'Normal' : 'Bold'}
                       </button>
                     </div>
-                  </div>
+                  </div> */}
 
-                  {/* <div className="mb-4">
+                  {/* <div className="mb-4 w-full">
                     <button 
-                      className='w-full text-md shadow bg-orange-500 hover:bg-orange-400 active:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded-l'
+                      className='w-full text-md shadow bg-orange-500 hover:bg-orange-400 active:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded'
                       type="button"
                       // onClick={this.agregarImagen}
                     >
@@ -420,13 +529,15 @@ class App extends React.PureComponent {
             </div>
           </div> 
 
-          <div className="my-auto col-span-12 sm:col-span-12 md:col-span-4 container mx-auto" style={{width: '311.811px', maxWidth: '311.811px', overflow: 'hidden'}}>
+          <div className="container m-auto col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4" style={{width: '311.811px', maxWidth: '311.811px', overflow: 'hidden'}}>
             <Carnet 
               info={this.state}
               ref={el => (this.ref = el)}
             />
           </div>
         </div>
+
+        <Footer />
 
       </div>
     );
