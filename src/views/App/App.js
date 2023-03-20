@@ -56,15 +56,10 @@ class App extends React.PureComponent {
     };
   }
 
-  settingTitle() {
-    // useEffect(() => {
-    //   document.title = 'My Page Title';
-    // }, []);
-  }
-
   componentDidMount() {
     this.getData();
     this.randomFactory();
+    document.title = "Crear Carnets con React.JS";
   }
 
   randomNumber(max, min = 0) {
