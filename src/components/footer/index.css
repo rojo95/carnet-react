@@ -1,0 +1,28 @@
+.heart-content > .heart {
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: palpito 1s linear .5s infinite;
+}
+
+.heart-content {
+    width: 29px;
+    height: 29px;
+}
+
+@keyframes palpito {
+    0% {
+        width: 24px;
+        height: 24px;
+    }
+    30% {
+        width: 27px;
+        height: 27px;
+    }
+    50%{
+        width: 24px;
+        height: 24px;
+    }
+    60% {
+        width: 29px;
+        height: 29px;
+    }
+}
